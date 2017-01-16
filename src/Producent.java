@@ -6,12 +6,11 @@ import java.util.concurrent.Semaphore;
 public class Producent extends Thread {
     private Bufor buf;
     private int number;
-    private static Semaphore sem;
+    private static Semaphore sem = new Semaphore(1);
 
-    public Producent(Bufor c, int number, Semaphore s)
+    public Producent(Bufor c, int number)
     { buf = c;
         this.number = number;
-        sem=s;
     }
     public void run()
     {
