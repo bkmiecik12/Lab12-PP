@@ -6,11 +6,10 @@ import java.util.concurrent.Semaphore;
 public class Konsument extends Thread{
     private Bufor buf;
     private int number;
-    private static Semaphore sem;
-    public Konsument(Bufor c, int number, Semaphore s)
+    private static Semaphore sem = new Semaphore(1);
+    public Konsument(Bufor c, int number)
     { buf = c;
         this.number = number;
-        sem=s;
     }
     public void run()
     { int value = 0;
@@ -22,7 +21,7 @@ public class Konsument extends Thread{
                     this.number + " rozpoczął: " + value);
 
             try {
-                sleep((int) (Math.random() * 100));
+                sleep((int) (Math.random() * 1000));
             } catch (InterruptedException e) {
             }
 

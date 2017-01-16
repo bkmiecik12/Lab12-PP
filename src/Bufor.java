@@ -6,12 +6,12 @@
 public class Bufor {
     private int contents;
     private boolean available = false;
-    public synchronized int get()
+    public int get()
     {
         available = false;
         return contents;
     }
-    public synchronized void put(int value)
+    public void put(int value)
     {
         contents = value;
         //available = true;
